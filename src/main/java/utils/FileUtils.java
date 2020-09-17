@@ -1,3 +1,5 @@
+package utils;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -7,8 +9,10 @@ public class FileUtils {
 
     private FileUtils() { }
 
-    static boolean writeContentToFile(String fileName, String content) {
-        return createFile(fileName) && writeToFile(fileName, content);
+    public static void writeContentToFile(String fileName, String content) {
+        if (createFile(fileName)) {
+            writeToFile(fileName, content);
+        }
     }
 
     private static boolean createFile(String fileName) {
@@ -44,12 +48,12 @@ public class FileUtils {
         return success;
     }
 
-    static boolean doesFileExist(String fileName) {
+    public static boolean doesFileExist(String fileName) {
         File f = new File(fileName);
         return f.exists() && !f.isDirectory();
     }
 
-    static String readFile(String fileName) {
+    public static String readFile(String fileName) {
         String data = "";
         try {
             File myObj = new File(fileName);

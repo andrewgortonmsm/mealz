@@ -1,3 +1,5 @@
+package utils;
+
 public class Constants {
 
     public static final String DINNER_OPTIONS_KEY = "dinnerOptions";

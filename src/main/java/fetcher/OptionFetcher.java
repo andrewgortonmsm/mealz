@@ -1,3 +1,5 @@
+package fetcher;
+
 import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Arrays;
@@ -9,13 +11,16 @@ import java.util.stream.Collectors;
 import com.google.api.services.sheets.v4.model.ValueRange;
 import com.google.common.base.Strings;
 
+import utils.Constants;
+import utils.FileUtils;
+
 public class OptionFetcher {
     private static final String DINNER_OPTIONS_FILE = "dinners.csv";
     private static final String LUNCH_OPTIONS_FILE = "lunches.csv";
 
     private OptionFetcher() { }
 
-    static Map<String, List<String>> getAllMealOptions() {
+    public static Map<String, List<String>> getAllMealOptions() {
         Map<String, List<String>> mealOptions;
 
         if (FileUtils.doesFileExist(LUNCH_OPTIONS_FILE) && FileUtils.doesFileExist(DINNER_OPTIONS_FILE)) {
