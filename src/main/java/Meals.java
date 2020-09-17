@@ -14,7 +14,7 @@ import fetcher.OptionFetcher;
 import utils.Constants;
 import utils.FileUtils;
 
-public class SheetsQuickstart {
+public class Meals {
 
     private static final String LUNCH_AND_DINNER_RESULTS_FILE = "lunchesAndDinners.csv";
 
@@ -35,7 +35,8 @@ public class SheetsQuickstart {
         List<String> lunches = integers.get().map(dayOfWeek -> getMeal(lunchOptions)).collect(Collectors.toList());
         List<String> dinners = integers.get().map(dayOfWeek -> getMeal(dinnerOptions)).collect(Collectors.toList());
 
-        FileUtils.writeContentToFile(LUNCH_AND_DINNER_RESULTS_FILE, resultToCsv(lunches, dinners));
+        String fullResultUri = Constants.RESULT_DIRECTORY + "/" + LUNCH_AND_DINNER_RESULTS_FILE;
+        FileUtils.writeContentToFile(fullResultUri, resultToCsv(lunches, dinners));
     }
 
     private static String resultToCsv(List<String> lunches, List<String> dinners) {
