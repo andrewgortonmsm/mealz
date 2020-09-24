@@ -3,9 +3,13 @@ package utils;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class FileUtils {
+    private static final String delim = ",";
 
     private FileUtils() { }
 
@@ -13,6 +17,17 @@ public class FileUtils {
         if (createFile(fileName)) {
             writeToFile(fileName, content);
         }
+    }
+
+    public static void writeContentToFile(String fileName, List<String> content) {
+        if (createFile(fileName)) {
+            writeToFile(fileName, String.join(delim, content));
+        }
+    }
+
+    public static List<String> readCsvToList(String lunchOptionsUri) {
+
+        return Arrays.stream(FileUtils.readFile(lunchOptionsUri).split(delim)).collect(Collectors.toList());
     }
 
     private static boolean createFile(String fileName) {

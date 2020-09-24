@@ -18,6 +18,10 @@ public class Meals {
 
     private static final String LUNCH_AND_DINNER_RESULTS_FILE = "lunchesAndDinners.csv";
 
+    /* TODO:
+    *   - Add Args handling.
+    *   - Add ability to reroll specific day / meal.
+    * */
     public static void main(String... args) {
         Map<String, List<String>> allOptions = OptionFetcher.getAllMealOptions();
         List<String> lunchOptions = allOptions.get(Constants.LUNCH_OPTIONS_KEY);
@@ -27,7 +31,6 @@ public class Meals {
 
         generateMealsForWorkingWeek(lunchOptions, dinnerOptions);
     }
-
 
     private static void generateMealsForWorkingWeek(List<String> lunchOptions, List<String> dinnerOptions) {
         Supplier<Stream<Integer>> integers = () -> Stream.of(0, 1, 2, 3, 4);
